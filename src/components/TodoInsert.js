@@ -11,5 +11,4 @@ const TodoInsert = () => {
     </form>
   );
 };
-
 export default TodoInsert;
