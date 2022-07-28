@@ -1,5 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { MdPlayArrow, MdPause } from 'react-icons/md';
+import {
+  MdPlayArrow,
+  MdPause,
+  MdOutlineDoneOutline,
+  MdOutlinePlayArrow,
+  MdOutlinePauseCircle,
+} from 'react-icons/md';
+import { TbPlayerPlay, TbPlayerPause } from 'react-icons/tb';
+import { BsPatchCheck, BsCheckCircle } from 'react-icons/bs';
 import { FcCheckmark } from 'react-icons/fc';
 import './Timer.scss';
 
@@ -47,24 +55,44 @@ export default function SetTimer() {
     setCurrentMinutes(minutes);
   };
 
+  // 토글
+  const [isStart, setIsStart] = useState(false);
+  const [isStop, setIsStop] = useState(true);
+
+  function toggleStart() {
+    setIsStart(!isStart);
+  }
+  function toggleStop() {
+    setIsStop(!isStop);
+  }
+
   // count의 변화에 따라 timer 함수 랜더링
   useEffect(timer, [count]);
   return (
     <div className="TimerTemplate">
       <div className="time">
-        <button className="start" onClick={start}>
+        <div className="startToggle" onClick={toggleStart}>
+          {isStart ? (
+            <TbPlayerPlay className="start" onClick={start} />
+          ) : (
+            <TbPlayerPause className="stop" onClick={stop} />
+          )}
+        </div>
+
+        {/* <button className="start" onClick={start}>
           <MdPlayArrow />
-        </button>
-        <button className="stop" onClick={stop}>
+          </button>
+          <button className="stop" onClick={stop}>
           <MdPause />
-        </button>
-        <button className="reset" onClick={reset}>
+          </button>
+          <button className="reset" onClick={reset}>
           <FcCheckmark />
-        </button>
+        </button> */}
         <h1>
           {currentHours < 10 ? `0${currentHours}` : currentHours}:
           {currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}:
           {currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}
+          <BsCheckCircle className="reset" onClick={reset} />
         </h1>
       </div>
     </div>
