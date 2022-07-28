@@ -16,10 +16,20 @@
     justify-content: center;
 
     .start {
+      border: none;
+      font-size: 2rem;
       color: #ed5a3d;
     }
     .stop {
-      color: #fbfbfb;
+      border: none;
+      font-size: 2rem;
+      //color: #fbfbfb;
+      color: #080707;
+    }
+    .reset {
+      border: none;
+      font-size: 1.5rem;
+      color: #5d9a61;
     }
   }
 
