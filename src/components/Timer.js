@@ -78,6 +78,7 @@ export default function SetTimer() {
             <TbPlayerPause className="stop" onClick={stop} />
           )}
         </div>
+
         {/* <button className="start" onClick={start}>
           <MdPlayArrow />
           </button>
